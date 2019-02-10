@@ -39,7 +39,7 @@ public class AddfriendAll extends LandlordCommand {
                 }
 
                 lm.sendMessage(player, lm.getString("Commands.AddfriendAll.success")
-                        .replace("%player%", name)
+                        .replace("%player%", lPlayer.getName())
                         .replace("%count%", count + ""));
 
                 new BukkitRunnable() {

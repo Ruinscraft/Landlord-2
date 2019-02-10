@@ -46,7 +46,7 @@ public class UnfriendAll extends LandlordCommand {
                 if (count > 0) {
                     lm.sendMessage(player, lm.getString("Commands.UnfriendAll.success")
                             .replace("%count%", String.valueOf(count))
-                            .replace("%players%", name));
+                            .replace("%players%", lPlayer.getName()));
                     new BukkitRunnable() {
 
                         @Override
@@ -56,7 +56,7 @@ public class UnfriendAll extends LandlordCommand {
                     }.runTask(plugin);
                 } else {
                     lm.sendMessage(player, lm.getString("Commands.UnfriendAll.noFriend")
-                            .replace("%player%", name));
+                            .replace("%player%", lPlayer.getName()));
                 }
             }
         });
