@@ -33,7 +33,7 @@ public class VaultHandler {
     }
 
     public void give(UUID id, double amount) {
-        EconomyResponse economyResponse = economy.depositPlayer(Bukkit.getOfflinePlayer(id), amount);
+        economy.depositPlayer(Bukkit.getOfflinePlayer(id), amount);
     }
 
     /**

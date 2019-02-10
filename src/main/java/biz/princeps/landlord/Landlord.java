@@ -281,7 +281,7 @@ public class Landlord extends JavaPlugin implements LandLordAPI {
 
     private void setupMetrics() {
         if (getConfig().getBoolean("EnableMetrics")) {
-            Metrics metrics = new Metrics(this);
+            new Metrics(this);
             //TODO maybe add some interesting statistics
         }
     }
