@@ -232,20 +232,25 @@ CommandSettings:
     - fr
 
   Addfriend:
-    name: addfriend
-    usage: '/land addfriend - Adds a friend to your land'
+    name: addonly
+    usage: '/land addonly - Adds a friend to your land'
     permissions:
     - landlord.player.own
     aliases:
+    - trustonly
+    - addfriend
     - friendadd
     - addmember
 
   RemoveFriend:
-    name: removefriend
-    usage: '/land unfriend - removes a friend from your land'
+    name: unaddonly
+    usage: '/land unaddonly - removes a friend from your land'
     permissions:
     - landlord.player.own
     aliases:
+    - removeonly
+    - unaddonly
+    - removefriend
     - unfriend
     - friendremove
     - frienddelete
@@ -253,21 +258,25 @@ CommandSettings:
     - removefriend
 
   AddfriendAll:
-    name: addfriendall
-    usage: '/land addfriendall - Adds a friend to all of your lands'
+    name: add
+    usage: '/land add - Adds a friend to all of your lands'
     permissions:
     - landlord.player.own
     aliases:
+    - trust
+    - addfriendall
     - friendaddall
     - addmemberall
     - friendall
 
   RemovefriendAll:
-    name: removefriendall
-    usage: '/land removefriendall - unfriend someone on all your lands'
+    name: unadd
+    usage: '/land unadd - unfriend someone on all your lands'
     permissions:
     - landlord.player.own
     aliases:
+    - remove
+    - removefriendall
     - unfriendall
     - removeallfriends
 
