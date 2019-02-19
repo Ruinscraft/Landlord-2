@@ -1,5 +1,6 @@
 package biz.princeps.landlord.persistent;
 
+import biz.princeps.landlord.Landlord;
 import biz.princeps.landlord.api.IPlayer;
 import biz.princeps.lib.storage.Datastorage;
 import biz.princeps.lib.storage_old.DatabaseType;
@@ -77,13 +78,13 @@ public class Database extends Datastorage {
 
     public IPlayer getPlayer(Object obj, Mode mode) {
         Triplet triplet = executeQuery("SELECT * FROM ll_players WHERE " + mode.name().toLowerCase() + " = '" +
-                sanitize(obj.toString()) + "'");
+                sanitize(obj.toString()).toLowerCase() + "'");
         //System.out.println("Query: " + "SELECT * FROM ll_players WHERE " + mode.name().toLowerCase() + " = '" +
         //       sanitize(obj.toString()) + "'");
         try {
             ResultSet res = triplet.getResultSet();
             if (!res.next()) {
-                return null;
+            	return null;
             } else {
                 return new LPlayer(res.getString("uuid"),
                         res.getString("name"),

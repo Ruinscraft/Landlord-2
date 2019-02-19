@@ -37,6 +37,11 @@ public class Claim extends LandlordCommand {
 
     public void onClaim(Player player, Chunk chunk) {
 
+    	if (chunk.getX() < 0) {
+    		player.sendMessage("This chunk is outside of the positive region and cannot be claimed");
+    		return;
+    	}
+
         if (this.worldDisabled(player)) {
             lm.sendMessage(player, lm.getString("Disabled-World"));
             return;

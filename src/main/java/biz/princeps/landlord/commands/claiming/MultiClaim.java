@@ -45,6 +45,19 @@ public class MultiClaim extends LandlordCommand {
 
             Set<Chunk> toClaim = getToClaimChunks(mode, param, player.getPlayer().getLocation());
 
+            Set<Chunk> toNotClaim = new HashSet<>();
+            for (Chunk chunk : toClaim) {
+            	if (chunk.getX() < 0) {
+            		toNotClaim.add(chunk);
+            	}
+            }
+            if (toNotClaim.size() > 0) {
+            	lm.sendMessage(player.getPlayer(), "Claim of " + toClaim.size() + 
+            			" chunks cancelled as they are outside of the positive region");
+            	
+            	toClaim.removeAll(toNotClaim);
+            }
+
             if (toClaim.size() == 0) {
                 lm.sendMessage(player.getPlayer(), lm.getString("Commands.MultiClaim.noLands"));
                 return;
@@ -52,7 +65,7 @@ public class MultiClaim extends LandlordCommand {
 
             int initalRegionCount = plugin.getWgHandler().getRegionCountOfPlayer(player.getPlayer().getUniqueId());
             double cost = 0;
-            for (Chunk ignored : toClaim) {
+            for (int i = 0; i < toClaim.size(); i++) {
                 cost += plugin.getCostManager().calculateCost(initalRegionCount);
                 initalRegionCount++;
             }
