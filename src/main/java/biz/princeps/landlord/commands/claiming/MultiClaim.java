@@ -52,8 +52,8 @@ public class MultiClaim extends LandlordCommand {
             	}
             }
             if (toNotClaim.size() > 0) {
-            	lm.sendMessage(player.getPlayer(), "Claim of " + toClaim.size() + 
-            			" chunks cancelled as they are outside of the positive region");
+            	lm.sendMessage(player.getPlayer(), lm.getString("Commands.MultiClaim.chunksNotInPositive")
+            			.replaceAll("%amount%", "" + toClaim.size()));
             	
             	toClaim.removeAll(toNotClaim);
             }
