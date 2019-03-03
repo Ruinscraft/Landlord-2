@@ -260,6 +260,7 @@ Commands:
     welcomeHome: '&aWelcome at %player%s home!'
     disabled: '&eThis feature is currently disabled'
     otherNoHome: '&4The player %player% does not have a home yet!'
+    notMember: '&4You can't teleport to %player%''s home because you are not a member of their land!'
   GiveClaims:
     noPlayer: '&eThere is no player with this name'
     success: '&aYou received %amount% claims!'

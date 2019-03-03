@@ -1,6 +1,5 @@
 package biz.princeps.landlord.persistent;
 
-import biz.princeps.landlord.Landlord;
 import biz.princeps.landlord.api.IPlayer;
 import biz.princeps.lib.storage.Datastorage;
 import biz.princeps.lib.storage_old.DatabaseType;
@@ -17,7 +16,8 @@ public class Database extends Datastorage {
 
     private static final int CURRENT_VERSION = 4;
 
-    public Database(Logger logger, DatabaseType type, String hostname, String port, String username, String password, String database) {
+    public Database(Logger logger, DatabaseType type, 
+    		String hostname, String port, String username, String password, String database) {
         super(logger, type, hostname, port, username, password, database);
         executeQuery("SELECT version FROM ll_version", this::handleUpgrade);
     }

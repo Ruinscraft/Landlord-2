@@ -121,7 +121,7 @@ public class Landlord extends JavaPlugin implements LandLordAPI {
         } else {
             String v = Bukkit.getPluginManager().getPlugin("WorldGuard").getDescription().getVersion();
             boolean flag = false;
-            if (!v.contains("beta")) {
+            if (!v.contains("beta") || !v.contains("SNAPSHOT")) {
                 try {
                     int version = Integer.valueOf(v.split(";")[1].split("-")[0]);
                     if (version < 1754) {

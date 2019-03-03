@@ -1,4 +1,4 @@
-package biz.princeps.landlord.commands.homes;
+package biz.princeps.landlord.commands.teleport;
 
 import biz.princeps.landlord.api.Options;
 import biz.princeps.landlord.commands.LandlordCommand;

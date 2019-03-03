@@ -1,12 +1,14 @@
-package biz.princeps.landlord.commands.homes;
+package biz.princeps.landlord.commands.teleport;
 
 import biz.princeps.landlord.api.Options;
 import biz.princeps.landlord.commands.LandlordCommand;
+import biz.princeps.landlord.util.OwnedLand;
 import biz.princeps.lib.command.Properties;
 import biz.princeps.lib.util.CommandDelayManager;
 import net.md_5.bungee.api.chat.ClickEvent;
 import net.md_5.bungee.api.chat.ComponentBuilder;
 import org.bukkit.Bukkit;
+import org.bukkit.Chunk;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
@@ -56,6 +58,12 @@ public class Home extends LandlordCommand {
                     Location home = lPlayer.getHome();
                     if (home == null) {
                         lm.sendMessage(player, lm.getString("Commands.Home.otherNoHome"));
+                        return;
+                    }
+
+                    OwnedLand land = plugin.getWgHandler().getRegion(home.getChunk());
+                    if (!land.getMembers().contains(lPlayer.getUuid())) {
+                    	lm.sendMessage(player, lm.getString("Commands.Home.notMember"));
                         return;
                     }
 
