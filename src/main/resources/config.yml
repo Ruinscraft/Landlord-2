@@ -376,11 +376,24 @@ CommandSettings:
 
   Home:
     name: home
-    usage: '/land home teleports you to your home'
+    usage: '/land home - teleports you to your home'
     permissions:
     - landlord.player.home
     aliases:
     - h
+
+  RandomTeleport:
+    name: randomteleport
+    usage: '/land randomteleport - teleports you to a random unclaimed area of the map'
+    permissions:
+    - landlord.player.randomteleport
+    aliases:
+    - rt
+    - random
+    # Max distance on Z axis from 0,0
+    z: 12000
+    # Max distance on X axis from 0,0
+    x: 4000
 
   GiveClaims:
     name: giveclaims

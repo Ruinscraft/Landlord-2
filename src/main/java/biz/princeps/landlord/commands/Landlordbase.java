@@ -12,6 +12,7 @@ import biz.princeps.landlord.commands.claiming.adv.RemoveAdvertise;
 import biz.princeps.landlord.commands.friends.*;
 import biz.princeps.landlord.commands.management.*;
 import biz.princeps.landlord.commands.teleport.Home;
+import biz.princeps.landlord.commands.teleport.RandomTeleport;
 import biz.princeps.landlord.commands.teleport.SetHome;
 import biz.princeps.landlord.manager.LangManager;
 import biz.princeps.landlord.persistent.LPlayer;
@@ -77,6 +78,7 @@ public class Landlordbase extends MainCommand {
         subcommands.put("claims", new Claims());
         subcommands.put("sethome", new SetHome());
         subcommands.put("home", new Home());
+        subcommands.put("randomteleport", new RandomTeleport());
         subcommands.put("giveclaims", new GiveClaims());
         subcommands.put("update", new Update());
         subcommands.put("advertise", new Advertise());
@@ -635,6 +637,23 @@ public class Landlordbase extends MainCommand {
         public void onCommand(Properties properties, Arguments arguments) {
             if (properties.isPlayer()) {
                 ((SetHome) subcommands.get("sethome")).onSetHome(properties.getPlayer());
+            }
+        }
+    }
+
+    class RandomTeleportCMD extends SubCommand {
+
+        public RandomTeleportCMD() {
+            super(pl.getConfig().getString("CommandSettings.RandomTeleport.name"),
+                    pl.getConfig().getString("CommandSettings.RandomTeleport.usage"),
+                    new HashSet<>(pl.getConfig().getStringList("CommandSettings.RandomTeleport.permissions")),
+                    pl.getConfig().getStringList("CommandSettings.RandomTeleport.aliases").toArray(new String[]{}));
+        }
+
+        @Override
+        public void onCommand(Properties properties, Arguments arguments) {
+            if (properties.isPlayer()) {
+                ((RandomTeleport) subcommands.get("randomteleport")).onRandomTeleport(properties.getPlayer());
             }
         }
     }
