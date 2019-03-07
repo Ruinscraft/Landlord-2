@@ -54,8 +54,8 @@ public class RandomTeleport extends LandlordCommand {
 	}
 
 	public Location getRandomTeleportLocation(Player player, int xMax, int zMax) {
-		int x = xMax * (int) random.nextDouble();
-		int z = zMax - ((zMax * 2) * (int) random.nextDouble());
+		int x = (int) (xMax * random.nextDouble());
+		int z = zMax - (int) ((zMax * 2) * random.nextDouble());
 
 		Block block = player.getWorld().getHighestBlockAt(x, z);
 		if (block.getY() < 62) {
