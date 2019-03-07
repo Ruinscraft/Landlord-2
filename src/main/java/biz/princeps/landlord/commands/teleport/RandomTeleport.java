@@ -1,9 +1,12 @@
 package biz.princeps.landlord.commands.teleport;
 
+import java.util.HashSet;
 import java.util.Random;
+import java.util.Set;
+import java.util.UUID;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.World;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
@@ -14,7 +17,15 @@ public class RandomTeleport extends LandlordCommand {
 
 	private Random random = new Random();
 
+	private Set<UUID> players = new HashSet<>();
+
 	public void onRandomTeleport(Player player) {
+		UUID playerUUID = player.getUniqueId();
+		if (players.contains(playerUUID)) {
+			lm.sendMessage(player, lm.getString("Commands.RandomTeleport.tooRecent"));
+			return;
+		}
+
 		int xMax = Landlord.getInstance().getConfig().getInt("CommandSettings.RandomTeleport.x");
 		int zMax = Landlord.getInstance().getConfig().getInt("CommandSettings.RandomTeleport.z");
 
@@ -28,14 +39,18 @@ public class RandomTeleport extends LandlordCommand {
 			}
 			i++;
 			if (i > 100) {
-				// no available locations!! say something sad
+				lm.sendMessage(player, lm.getString("Commands.RandomTeleport.noneAvailable"));
 				return;
 			}
 		}
 
 		player.teleport(randomLocation);
-		// say something nice because they are teleported
-		
+		lm.sendMessage(player, lm.getString("Commands.RandomTeleport.success"));
+
+		players.add(playerUUID);
+		Bukkit.getScheduler().runTaskLater(Landlord.getInstance(), () -> {
+			players.remove(playerUUID);
+		}, 20 * 60);
 	}
 
 	public Location getRandomTeleportLocation(Player player, int xMax, int zMax) {

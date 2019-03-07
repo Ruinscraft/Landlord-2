@@ -261,6 +261,10 @@ Commands:
     disabled: '&eThis feature is currently disabled'
     otherNoHome: '&4The player %player% does not have a home yet!'
     notMember: '&4You can't teleport to %player%''s home because you are not a member of their land!'
+  RandomTeleport:
+    tooRecent: '&4You''ve teleported to a random location too recently! Try again in a bit.'
+    noneAvailable: '&4There are no locations to teleport to!'
+    success: '&aYou have been teleported.'
   GiveClaims:
     noPlayer: '&eThere is no player with this name'
     success: '&aYou received %amount% claims!'
