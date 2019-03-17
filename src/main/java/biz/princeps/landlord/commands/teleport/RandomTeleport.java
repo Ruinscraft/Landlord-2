@@ -7,6 +7,7 @@ import java.util.UUID;
 
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 
@@ -61,6 +62,13 @@ public class RandomTeleport extends LandlordCommand {
 		if (block.getY() < 62) {
 			return null;
 		} else if (block.isLiquid()) {
+			return null;
+		} else if (block.getType() == Material.OAK_LOG ||
+				block.getType() == Material.DARK_OAK_LOG ||
+				block.getType() == Material.BIRCH_LOG ||
+				block.getType() == Material.ACACIA_LOG ||
+				block.getType() == Material.SPRUCE_LOG ||
+				block.getType() == Material.JUNGLE_LOG) {
 			return null;
 		} else if (!Landlord.getInstance().getWgHandler().canClaim(player, block.getChunk())) {
 			return null;
