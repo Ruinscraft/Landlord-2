@@ -24,6 +24,7 @@ permissions:
       landlord.player.info: true
       landlord.player.shop: true
       landlord.player.home: true
+      landlord.player.randomteleport: true
       landlord.player.advertise: true
       landlord.player.manage: true
 
@@ -76,6 +77,10 @@ permissions:
 
   landlord.player.home:
     description: Permission to set home and teleport back
+    default: true
+
+  landlord.player.randomteleport:
+    description: Permission to teleport to a random location in the default world
     default: true
 
   landlord.player.advertise:
