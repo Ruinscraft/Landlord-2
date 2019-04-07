@@ -1,5 +1,5 @@
 name: Landlord
-version: 3.120
+version: 3.136
 main: biz.princeps.landlord.Landlord
 author: SpatiumPrinceps
 website: https://www.spigotmc.org/resources/beta-landlord-2.44398/
@@ -27,6 +27,7 @@ permissions:
       landlord.player.randomteleport: true
       landlord.player.advertise: true
       landlord.player.manage: true
+      landlord.player.manage.*: true
 
 
   landlord.admin.*:
